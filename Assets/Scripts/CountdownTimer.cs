@@ -12,6 +12,7 @@ public class CountdownTimer : MonoBehaviour
     StartCoroutine(CountdownCoroutine());
    }
 
+//カウントダウンを表示するプログラム
    IEnumerator CountdownCoroutine(){
         for(int i = 3; i > 0; i--){
             countdownText.text = i.ToString();
