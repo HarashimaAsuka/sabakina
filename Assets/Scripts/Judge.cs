@@ -89,20 +89,21 @@ public class Judge : MonoBehaviour
             OnClickRightButton();
         }
 
-            if(notesManager.LaneNum.Count > 0 && notesManager.NotesTime.Count > 0){       
-                if(Time.time > notesManager.NotesTime[0] + 0.2f + GameManager.instance.StartTime){
-                    DescendingPlane.GetComponent<DescendingPlane>().AddSpeed(defaultspeed * speedrate);
-                    message(3, notesManager.LaneNum[0]);
-                    GameManager.instance.combo = 0;
-                    deleteData();
-                    SetLifeGauge2(1);
-                    missNum++;
-                    missNumText.text = missNum.ToString();
-                    var impulseSource = ImpulseSource.GetComponent<CinemachineImpulseSource>();//0408
-                    impulseSource.GenerateImpulse();//0408
-                    Debug.Log("Miss");
-                }
+        //Missの処理
+        if(notesManager.LaneNum.Count > 0 && notesManager.NotesTime.Count > 0){       
+            if(Time.time > notesManager.NotesTime[0] + 0.2f + GameManager.instance.StartTime){
+                DescendingPlane.GetComponent<DescendingPlane>().AddSpeed(defaultspeed * speedrate);
+                message(3, notesManager.LaneNum[0]);
+                GameManager.instance.combo = 0;
+                deleteData();
+                SetLifeGauge2(1);
+                missNum++;
+                missNumText.text = missNum.ToString();
+                var impulseSource = ImpulseSource.GetComponent<CinemachineImpulseSource>();//0408
+                impulseSource.GenerateImpulse();//0408
+                Debug.Log("Miss");
             }
+        }
     }
 
     public void OnClickLeftButton(){
@@ -129,6 +130,7 @@ public class Judge : MonoBehaviour
 
         Debug.Log("Time Lag: " + timeLag);
 
+        //Perfectの処理
         if(timeLag <= 0.10){
             Debug.Log("Perfect");
             judge = 0;
@@ -145,6 +147,7 @@ public class Judge : MonoBehaviour
             }
         }
 
+        // Greatの処理
         else if(timeLag <= 0.15f){
             Debug.Log("Great");
             judge = 1;
@@ -161,6 +164,7 @@ public class Judge : MonoBehaviour
             }
         }
 
+        // Badの処理
         else if(timeLag <= 0.20f){
             Debug.Log("Bad");
             judge = 2;

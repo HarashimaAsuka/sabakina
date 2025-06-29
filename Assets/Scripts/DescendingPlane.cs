@@ -38,6 +38,7 @@ public class DescendingPlane : MonoBehaviour
         return num;
     }
 
+    //飛行機の降下処理
     void MovePlane(){
         float num = GetCurrentLocation();
         // Debug.Log(num);
@@ -60,6 +61,7 @@ public class DescendingPlane : MonoBehaviour
         speed = speed * value;
     }
 
+    //ゲームオーバー前に少し待機
     IEnumerator SetActiveResultCanvas(float delay){
         float pausedTime = 0f;
 
