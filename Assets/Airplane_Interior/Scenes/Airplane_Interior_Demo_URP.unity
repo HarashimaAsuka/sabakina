@@ -3671,37 +3671,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 79423537}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &561527314
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 561527315}
-  m_Layer: 0
-  m_Name: ScreamController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &561527315
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 561527314}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.93185496, y: 2.1073751, z: -2.8319373}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1477674954}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &577122602
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34929,7 +34898,6 @@ Transform:
   - {fileID: 96111635}
   - {fileID: 673228774}
   - {fileID: 756196573}
-  - {fileID: 561527315}
   m_Father: {fileID: 79423537}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1496423993

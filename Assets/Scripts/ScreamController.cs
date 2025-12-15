@@ -1,32 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class ScreamController : MonoBehaviour
 {
-    public AudioSource screamSource;
-    public AudioClip screamClip;
-    public float passengerZ = -4.0f;
-    public float threshold = 0.1f;
+    [Header("Judge Position")]
+    [SerializeField] private float passengerZ = -4.0f;
 
-    [SerializeField] public GameObject passengerObj;
+    [Header("Audio")]
+    [SerializeField] private AudioClip screamClip;
 
-    // Start is called before the first frame update
-    void Start()
+    private AudioSource audioSource;
+    private bool hasPlayed = false;
+
+    void Awake()
     {
-        screamSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Mathf.Abs(passengerObj.transform.position.z - passengerZ) <= threshold){
-            PlayScream();
-            Debug.Log("発火");
-        }
-    }
+        if (hasPlayed) return;
 
-    void PlayScream(){
-            screamSource.PlayOneShot(screamClip);
+        // 自分自身（Passenger）の位置を見る
+        if (transform.position.z <= passengerZ)
+        {
+            audioSource.PlayOneShot(screamClip);
+            hasPlayed = true;
+            Debug.Log("Scream 発火");
+        }
     }
 }
