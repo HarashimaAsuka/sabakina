@@ -89,12 +89,12 @@ public class Judge : MonoBehaviour
         }
 
         // 左
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown("joystick button 0"))
         {
             OnClickLeftButton();
         }
         // 右
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown("joystick button 1"))
         {
             OnClickRightButton();
         }
