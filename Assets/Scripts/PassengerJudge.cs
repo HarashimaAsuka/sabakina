@@ -23,11 +23,11 @@ public class PassengerJudge : MonoBehaviour
 
     void Update(){
         if(GameManager.instance.GetState() != GameState.PLAY) return;
-        if(Input.GetKeyDown(KeyCode.LeftArrow)){
+        if(Input.GetKeyDown(KeyCode.LeftArrow)|| Input.GetKeyDown("joystick button 0")){
             OnClickLeftButton();
             Debug.Log("ひだり");
         }
-        if(Input.GetKeyDown(KeyCode.RightArrow)){
+        if(Input.GetKeyDown(KeyCode.RightArrow)|| Input.GetKeyDown("joystick button 1")){
             OnClickRightButton();
             Debug.Log("みぎ");
         }

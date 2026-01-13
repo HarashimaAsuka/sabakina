@@ -1,3 +1,51 @@
+// using UnityEngine;
+// using UnityEngine.SceneManagement;
+
+// public class MainContext : MonoBehaviour
+// {
+//     void Start()
+//     {
+//         Debug.Log("MainContext Start");
+
+//         if (GameManager.instance == null)
+//         {
+//             Debug.LogError("GameManager is null");
+//             return;
+//         }
+
+//         // 現在のシーン名を取得
+//         string currentScene = SceneManager.GetActiveScene().name;
+//         Debug.Log("Scene: " + currentScene);
+
+//         switch (currentScene)
+//         {
+//             case "StartScene":
+//                 // スタート画面：入力待ち
+//                 GameManager.instance.SetState(GameState.READY);
+//                 break;
+
+//             case "OpeningScene":
+//                 // オープニング：演出＋入力待ち
+//                 GameManager.instance.SetState(GameState.READY);
+//                 break;
+
+//             case "Airplane_Interior_Demo_URP":
+//                 // ゲーム開始
+//                 GameManager.instance.SetState(GameState.PLAY);
+//                 break;
+
+//             default:
+//                 Debug.LogWarning("MainContext: 未対応のシーンです → " + currentScene);
+//                 break;
+//         }
+
+//         Debug.Log("MainContext State: " + GameManager.instance.GetState());
+//     }
+// }
+
+
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
