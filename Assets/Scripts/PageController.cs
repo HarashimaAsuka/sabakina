@@ -110,6 +110,122 @@
 
 
 
+// using System.Collections;
+// using System.Collections.Generic;
+// using UnityEngine;
+// using UnityEngine.SceneManagement;
+
+// public class PageController : MonoBehaviour
+// {
+//    public string sceneName;
+//    public string thisSceneName;
+//    public float delayTime;
+//    public GameObject gameOverResultCanvas;
+//    public GameObject gameClearRsultCanvas;
+
+//    void Start(){
+//       if(thisSceneName == "OpeningScene"){
+//          DelayGotoNextScene();
+//       }
+//    }
+
+//    void Update()
+// {
+//     // GameManager が存在しないシーンでは何もしない
+//     if (GameManager.instance == null) return;
+
+//     Debug.Log("State: " + GameManager.instance.GetState());
+
+//     if (
+//         Input.GetKeyDown(KeyCode.RightArrow) ||
+//         Input.GetKeyDown("joystick button 0") ||
+//         Input.GetKeyDown("joystick button 1")
+//     )
+//     {
+//         GotoNextScene();
+//     }
+
+//     // GameClear
+//     if (
+//         gameClearRsultCanvas != null &&
+//         gameClearRsultCanvas.activeSelf &&
+//         (
+//             Input.GetKeyDown(KeyCode.RightArrow) ||
+//             Input.GetKeyDown("joystick button 1")
+//         )
+//     )
+//     {
+//         GotoNextScene();
+//     }
+
+//     // GameOver
+//     if (
+//         gameOverResultCanvas != null &&
+//         gameOverResultCanvas.activeSelf &&
+//         (
+//             Input.GetKeyDown(KeyCode.RightArrow) ||
+//             Input.GetKeyDown("joystick button 1")
+//         )
+//     )
+//     {
+//         GotoNextScene();
+//     }
+// }
+
+
+   
+//    public void GotoNextScene(){
+//       SceneManager.LoadScene(sceneName);
+//    }
+
+//    public void DelayGotoNextScene(){
+//       Invoke("GotoNextScene" , delayTime);
+//    }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -129,57 +245,74 @@ public class PageController : MonoBehaviour
       }
    }
 
-   void Update()
+bool isLoading = false;
+
+void Update()
 {
-   Debug.Log("State: " + GameManager.instance.GetState());
+    Debug.Log("Current State: " + GameManager.instance.GetState());
 
-    // GameManager が存在しないシーンでは何もしない
-    if (GameManager.instance == null) return;
+    if (isLoading) return;
 
-    if(Input.GetKeyDown(KeyCode.RightArrow) ||
-            Input.GetKeyDown("joystick button 0") ||
-            Input.GetKeyDown("joystick button 1")){
-        GotoNextScene();
+    // GameManager がいないシーン
+    if (GameManager.instance == null)
+    {
+        if (AnyInput())
+        {
+            Load();
+        }
+        return;
     }
 
-    if (    Input.GetKeyDown(KeyCode.RightArrow) ||
-            Input.GetKeyDown("joystick button 0") ||
-            Input.GetKeyDown("joystick button 1")
-        
+    if (
+        GameManager.instance.GetState() == GameState.READY &&
+        AnyInput()
     )
     {
-        GotoNextScene();
+        Load();
     }
 
-    // GameClear
+    if (
+        GameManager.instance.GetState() == GameState.RESULT &&
+        AnyInput()
+    )
+    {
+        Load();
+    }
+
     if (
         gameClearRsultCanvas != null &&
         gameClearRsultCanvas.activeSelf &&
-        (
-            Input.GetKeyDown(KeyCode.RightArrow) ||
-            Input.GetKeyDown("joystick button 1")
-        )
+        AnyInput()
     )
     {
-        GotoNextScene();
+        Load();
     }
 
-    // GameOver
     if (
         gameOverResultCanvas != null &&
         gameOverResultCanvas.activeSelf &&
-        (
-            Input.GetKeyDown(KeyCode.RightArrow) ||
-            Input.GetKeyDown("joystick button 1")
-        )
+        AnyInput()
     )
     {
-        GotoNextScene();
+        Load();
     }
 }
 
-   
-   public void GotoNextScene(){
+bool AnyInput()
+{
+    return
+        Input.GetKeyDown(KeyCode.RightArrow) ||
+        Input.GetKeyDown("joystick button 0") ||
+        Input.GetKeyDown("joystick button 1");
+}
+
+void Load()
+{
+    isLoading = true;
+    GotoNextScene();
+}
+
+    public void GotoNextScene(){
       SceneManager.LoadScene(sceneName);
    }
 

@@ -77,12 +77,22 @@ public class Judge : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Update running");
         // ゲームがPLAYでなければ処理しない
+        Debug.Log(
+    $"Time.time={Time.time} / " +
+    $"StartTime={GameManager.instance.StartTime} / " +
+    $"endTime={endTime} / " +
+    $"判定={Time.time > endTime + GameManager.instance.StartTime}"
+);
+
         if (GameManager.instance.GetState() != GameState.PLAY) return;
+        Debug.Log("State is PLAY");
         // 音楽終了後リザルト画面へ遷移
         if (Time.time > endTime + GameManager.instance.StartTime)
         {
             finish.SetActive(true);
+            Debug.Log("★★★ RESULT に変更 ★★★");
             GameManager.instance.SetState(GameState.RESULT);
             StartCoroutine(ShowResultAfterDelay());
             return;
