@@ -21,7 +21,7 @@
 //         {
 //             case "StartScene":
 //                 // スタート画面：入力待ち
-//                 GameManager.instance.SetState(GameState.READY);
+//                 (GameState.READY);
 //                 break;
 
 //             case "OpeningScene":
@@ -119,12 +119,14 @@ public class MainContext : MonoBehaviour
         switch (scene)
         {
             case "StartScene":
+            break;
             case "OpeningScene":
                 GameManager.instance.SetState(GameState.READY);
                 break;
 
             case "Airplane_Interior_Demo_URP": // GameScene
-                GameManager.instance.SetState(GameState.PLAY);
+                //GameManager.instance.SetState(GameState.READY);
+                Invoke("SetGamePlay", 2.0f);
                 break;
 
             case "ResultScene":
@@ -134,4 +136,11 @@ public class MainContext : MonoBehaviour
 
         Debug.Log($"[MainContext] {scene} → {GameManager.instance.GetState()}");
     }
+
+    public void SetGamePlay()
+    {
+        GameManager.instance.SetState(GameState.PLAY);
+    }
+
+
 }

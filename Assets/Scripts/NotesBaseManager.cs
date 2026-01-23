@@ -35,6 +35,7 @@ public class NotesBaseManager : MonoBehaviour
 
 
     public virtual void Load(string SongName){
+        Debug.Log("load開始");
         TextAsset textAsset = Resources.Load<TextAsset>(SongName);
 
         if(textAsset == null){
@@ -60,9 +61,10 @@ public class NotesBaseManager : MonoBehaviour
             Debug.Log(inputJson.notes[i].block);
         }
         
+       
+         Debug.Log("load終了");
     }
 
-    
 
     public virtual void GameClear(){
         

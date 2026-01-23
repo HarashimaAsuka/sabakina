@@ -236,8 +236,8 @@ public class PageController : MonoBehaviour
    public string sceneName;
    public string thisSceneName;
    public float delayTime;
-   public GameObject gameOverResultCanvas;
-   public GameObject gameClearRsultCanvas;
+   [SerializeField] private GameObject gameOverResultCanvas;
+   [SerializeField] private GameObject gameClearRsultCanvas;
 
    void Start(){
       if(thisSceneName == "OpeningScene"){
@@ -249,8 +249,6 @@ bool isLoading = false;
 
 void Update()
 {
-    Debug.Log("Current State: " + GameManager.instance.GetState());
-
     if (isLoading) return;
 
     // GameManager がいないシーン
@@ -262,6 +260,9 @@ void Update()
         }
         return;
     }
+
+    Debug.Log("Current State: " + GameManager.instance.GetState());
+
 
     if (
         GameManager.instance.GetState() == GameState.READY &&

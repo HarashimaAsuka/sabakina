@@ -23,6 +23,7 @@ public class DescendingPlane : MonoBehaviour
 
         if(AirplanePosY <= 0){
             GameOverText.gameObject.SetActive(true);
+            GameManager.instance.SetState(GameState.RESULT);
             StartCoroutine(SetActiveResultCanvas(3));
             Time.timeScale = 0;
         }
