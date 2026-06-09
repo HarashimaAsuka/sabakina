@@ -18,8 +18,6 @@ public class Judge : MonoBehaviour
     [SerializeField] private Transform lifeGaugeParent;
 
     [SerializeField] GameObject finish;
-    // [SerializeField] public GameObject resultGameoverText;
-    // [SerializeField] public GameObject resultGameclear;
 
     [SerializeField] TextMeshProUGUI comboText;
     [SerializeField] TextMeshProUGUI scoreText;
@@ -77,14 +75,13 @@ public class Judge : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Update running");
         // ゲームがPLAYでなければ処理しない
         Debug.Log(
-    $"Time.time={Time.time} / " +
-    $"StartTime={GameManager.instance.StartTime} / " +
-    $"endTime={endTime} / " +
-    $"判定={Time.time > endTime + GameManager.instance.StartTime}"
-);
+        $"Time.time={Time.time} / " +
+        $"StartTime={GameManager.instance.StartTime} / " +
+        $"endTime={endTime} / " +
+        $"判定={Time.time > endTime + GameManager.instance.StartTime}"
+        );
 
         if (GameManager.instance.GetState() != GameState.PLAY) return;
         Debug.Log("State is PLAY");
